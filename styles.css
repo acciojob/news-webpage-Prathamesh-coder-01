@@ -1,1 +1,76 @@
-/*  your css code here. If applicable */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+
+header {
+  background-color: #011e29;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.latest-news {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.latest-news h2 {
+  margin-bottom: 10px;
+}
+
+.latest-news li {
+  margin-bottom: 8px;
+}
+
+
+.main-article {
+justify-content: center;
+text-align: center;
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.main-article h2 {
+  margin-bottom: 10px;
+}
+
+
+.pictorial-news {
+  background: #f7f7f7;
+  padding: 15px;
+  border-radius: 10px;
+  
+}
+
+.pictorial-news h2 {
+  margin-bottom: 10px;
+}
+
+.pictorial-news .images {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.pictorial-news img {
+   
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
