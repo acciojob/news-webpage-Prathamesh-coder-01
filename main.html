@@ -1,11 +1,118 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shaw's News</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Global reset + base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Page colours required by test-cases */
+    body {
+      background-color: #f5f5f5; /* body-background-color */
+      color: #111;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background-color: #011e29; /* header-background-color */
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    /* Layout */
+    .container {
+      width: min(1200px, 96%);
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr; /* keeps the 3-column layout */
+      gap: 20px;
+    }
+
+    /* Cards */
+    .latest-news,
+    .main-article,
+    .pictorial-news {
+      background: #f7f7f7;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .latest-news h2,
+    .main-article h2,
+    .pictorial-news h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    /* Ensure list bullets are visible (reset removed default padding) */
+    .latest-news ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .latest-news li {
+      margin-bottom: 8px;
+    }
+
+    .main-article {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .main-article p {
+      color: #333;
+    }
+
+    .pictorial-news .images {
+      display: flex;
+      gap: 10px;
+      flex-direction: column; /* column on small screens */
+    }
+
+    .pictorial-news img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* Responsive: switch to row for wider screens and make images smaller */
+    @media (min-width: 900px) {
+      .pictorial-news .images {
+        flex-direction: column; /* keep column to match original visual */
+      }
+
+      .pictorial-news img {
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr; /* stack columns on small screens */
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -13,10 +120,10 @@
     <h1>Shaw's News</h1>
   </header>
 
-  <main class="container">
+  <main class="container" role="main">
    
-    <section class="latest-news">
-      <h2>Latest News Articles</h2>
+    <section class="latest-news" aria-labelledby="latest-heading">
+      <h2 id="latest-heading">Latest News Articles</h2>
       <ul>
         <li>Article 1</li>
         <li>Article 2</li>
@@ -24,22 +131,17 @@
       </ul>
     </section>
 
-  
-    <section class="main-article">
-      <h2>Main Article</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed euismod magna eu ligula malesuada, quis blandit elit fermentum. 
-        Suspendisse vel eros sed magna vulputate mollis. 
-        Curabitur ac ligula non felis laoreet vulputate.</p>
+    <section class="main-article" aria-labelledby="main-heading">
+      <h2 id="main-heading">Main Article</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod magna eu ligula malesuada, quis blandit elit fermentum. Suspendisse vel eros sed magna vulputate mollis. Curabitur ac ligula non felis laoreet vulputate.</p>
     </section>
 
-    
-    <section class="pictorial-news">
-      <h2>Pictorial News</h2>
+    <section class="pictorial-news" aria-labelledby="pictorial-heading">
+      <h2 id="pictorial-heading">Pictorial News</h2>
       <div class="images">
-        <img src="https://images.hindustantimes.com/img/2023/01/29/550x309/delhi_rains_1674974112847_1674981888135_1674981888135.jpeg" alt="News 1">     
-        <img src="https://images.hindustantimes.com/img/2023/01/29/550x309/ADANI-INDIA-GAUTAM-ADANI-0_1675011651023_1675011651023_1675011672003_1675011672003.JPG" alt="News 2">
-        <img src="https://images.hindustantimes.com/img/2023/01/29/550x309/FRANCE-REFORM-PENSIONS-31_1675022359706_1675022359706_1675022383851_1675022383851.JPG" alt="News 3">
+        <img src="https://images.hindustantimes.com/img/2023/01/29/550x309/delhi_rains_1674974112847_1674981888135_1674981888135.jpeg" alt="City after heavy rains">     
+        <img src="https://images.hindustantimes.com/img/2023/01/29/550x309/ADANI-INDIA-GAUTAM-ADANI-0_1675011651023_1675011651023_1675011672003_1675011672003.JPG" alt="Business leader portrait">
+        <img src="https://images.hindustantimes.com/img/2023/01/29/550x309/FRANCE-REFORM-PENSIONS-31_1675022359706_1675022359706_1675022383851_1675022383851.JPG" alt="Street protests in France">
       </div>
     </section>
   </main>
